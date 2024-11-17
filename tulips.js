@@ -1,0 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        alert("Sábado 16 de Noviembre del 2024 a las 18:22 horas\n\nQuerida Gisell Rosales Mailen, \n\nEs un honor dirigirme a ti para expresarte mi más sincero reconocimiento y admiración. Quiero aprovechar esta ocasión para dedicarte unas palabras, con la esperanza de transmitir lo que siento en lo más profundo de mi ser.\n\nEste pequeño gesto es para ti, como muestra de aprecio por ser una persona tan admirable, tanto en tu inteligencia como en tu bondad. Eres, sin lugar a dudas, un ser excepcional que ilumina el camino de quienes tienen la suerte de conocerte.\n\nRecuerda siempre que, aunque no todos los días sean radiantes, tu esencia irradia belleza y virtud cada día, sin excepción. Tu presencia y tu espíritu son una fuente constante de inspiración y alegría, y por ello, te considero un ser verdaderamente digno de admiración.\n\nCon afecto y gratitud,\n\nOmar Alejandro Montes Santillan");
+    }, 15000);
+});

@@ -1,0 +1,487 @@
+:root{
+    --bg-gr: linear-gradient(to top,#b6445c,#dc5571);
+    --gota-gr: linear-gradient(to top, #f4c5d5, #e78da3);
+    --florero1-gr: linear-gradient( #ffc0cd 30%, #ff7894 90%);
+    --florero2-gr: linear-gradient(to top, #ffc0cd 30%, #ff7894);
+    --tallo-gr: linear-gradient(to top,#228b22 0%, #175947 80%);
+    --petalo1-gr: linear-gradient(#ff7894, #ff9cb1);
+    --petalo2-gr: linear-gradient(#ff9cb1, #ffc0cd);
+    --petalo3-gr: linear-gradient(#ffc0cd 50%, #ff7894 97.5%);
+    --petalo4-gr: linear-gradient(#ffe3ea 50%, #ff7894 97.5%);
+    --hoja1-gr: linear-gradient(#20875F, #228b22);
+    --hoja2-gr: linear-gradient(#228b22, #20875F );
+
+    --ancho-florero: 220px;
+    --alto-florero: 180px;
+    --ancho-petalo: 63px;
+    --alto-petalo: 153px;
+    --ancho-tallo: 13.5px;
+    --alto-tallo: 375px;
+    --ancho-hoja: 22.5px;
+    --alto-hoja: 375px;
+
+    --tulipan-anm-duration: 5s;
+    --tulipan-anm-delay: 6s;
+    --petalo-anm-duration: 5s;
+    --petalo-anm-delay: 7.5s;
+    --florero-anm-duration: 5s;
+    --florero-anm-delay: 1s;
+}    
+body{
+    background-image: var(--bg-gr);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#fondo{
+    width: 100vw;
+    height: 100vh;
+    background-color: #dc5571;
+    opacity: 0.9;
+    background-image:  linear-gradient(135deg, #b6445c 25%, transparent 25%), linear-gradient(225deg, #b6445c 25%, transparent 25%), linear-gradient(45deg, #b6445c 25%, transparent 25%), linear-gradient(315deg, #b6445c 25%, #dc5571 25%);
+    background-position:  40px 0, 40px 0, 0 0, 0 0;
+    background-size: 80px 80px;
+    background-repeat: repeat;    
+    position: absolute;
+    top: 0px;
+    left: 0pxs;
+}
+#florero {
+    background-image: var(--florero1-gr);
+    border-radius: 52% 48% 50% 50% / 65% 65% 35% 35% ;
+    width: var(--ancho-florero);
+    height: var(--alto-florero);
+    top: 50%;
+    /* left: 0%; */
+    /* transform: translate(0%, 50%); */
+    position: absolute;
+    z-index: 5;
+    /* opacity: 0.75; */
+    box-shadow: 0px 0px 15px 2.5px #651225;
+    animation-name: florero;
+    animation-duration: var(--florero-anm-duration);
+    animation-delay: var(--florero-anm-delay);
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+#florero::after {
+    content: "";
+    background-image: var(--florero2-gr);
+    border-radius: 52% 48% 50% 50% / 3% 3% 97% 97% ;
+    width: calc(var(--ancho-florero) * 0.75);
+    height: calc(var(--alto-florero) * 4 / 7);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -137.5%);
+    position: absolute;
+    z-index: 5;
+}   
+
+#water1{
+    /* background-image: var(--florero1-gr); */
+    content: '';
+    background-color: #a22e4f;
+    width: 220px;
+    height: 120px;
+    top: 70px;
+    /* left: 0%; */
+    position: absolute;
+    /* opacity: 0.75; */
+    /* box-shadow: 0px 0px 15px 2.5px #651225; */
+    animation-name: llenarFlorero;
+    animation-duration: 5s;
+    animation-delay: 6s;
+}
+
+#water{
+    background-color: transparent;
+    border-radius: 52% 48% 50% 50% / 65% 65% 35% 35% ;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 180px;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(-50%,47.5%);
+    z-index: 4;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    animation-name: mostrarAgua;
+    animation-duration: 6.1s;
+    animation-delay: 0s;
+}
+
+.tulipan{
+    position: relative;
+    width: var(--ancho-petalo);
+    top: -250px;
+    z-index: 0;
+}
+
+.tulipan1{
+    transform: scale(0) rotate(-20deg);
+    left: -85px;
+    top: -250px;
+    animation: crecimiento1 var(--tulipan-anm-duration) var(--tulipan-anm-delay) forwards;
+
+}
+
+.tulipan2{
+    top: -280px;
+    animation-name: crecimiento2;
+    animation-delay: var(--tulipan-anm-delay);
+    animation-duration: var(--tulipan-anm-duration);
+    animation-fill-mode: forwards;
+    transform: scale(0);
+}
+
+.tulipan3{
+    transform: scale(0) rotate(20deg);
+    left: +85px;
+    top: -250px;
+    animation-name: crecimiento3;
+    animation-delay: var(--tulipan-anm-delay);
+    animation-duration: var(--tulipan-anm-duration);
+    animation-fill-mode: forwards;
+    transform-origin: bottom;
+}
+
+.petalo{
+    content: "";
+    position: absolute;
+    width: var(--ancho-petalo);
+    height: var(--alto-petalo);
+    border-radius: 52% 48% 50% 50% / 65% 65% 35% 35%;
+    box-shadow: 0px 0px 15px 2.5px #651225 ;
+}
+
+.petalo1 {
+    /* background-color: #ff7894; */
+    background-image: var(--petalo1-gr);
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    /* transform: rotate(-15deg); */
+    animation: petalo1 var(--petalo-anm-duration) ease-in-out var(--petalo-anm-delay) forwards, petalo1mov 5s linear 12.5s forwards infinite;
+}
+
+.petalo2 {
+    /* background-color: #ff9cb1; */
+    background-image: var(--petalo2-gr);
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    /* transform: rotate(15deg); */
+    animation: petalo2 var(--petalo-anm-duration) ease-in-out var(--petalo-anm-delay) forwards, petalo2mov 5s linear 12.5s forwards infinite;
+
+}
+
+.petalo3 {
+    /* background-color: #ffc0cd; */
+    background-image: var(--petalo3-gr);
+    top: calc(var(--alto-petalo) * 3 / 40);
+    /* left: calc(var(--ancho-petalo) * -9 /25); */
+    z-index: 3;
+    /* transform: rotate(-10deg); */
+    animation: petalo3 var(--petalo-anm-duration) ease-in-out var(--petalo-anm-delay) forwards, petalo3mov 5s linear 12.5s forwards infinite;
+
+}
+
+.petalo4 {
+    /* background-color: #ffe3ea; */
+    background-image: var(--petalo4-gr);
+    top: calc(var(--alto-petalo) * 3 / 40);
+    /* left: calc(var(--ancho-petalo) * 9 /25); */
+    z-index: 4;
+    /* transform: rotate(10deg); */
+    animation: petalo4 var(--petalo-anm-duration) ease-in-out var(--petalo-anm-delay) forwards, petalo4mov 5s linear 12.5s forwards infinite;
+
+}
+
+.tallo{
+    width: var(--ancho-tallo);
+    height: var(--alto-tallo);
+    border-radius: 52% 48% 50% 50% / 3% 3% 97% 97% ;
+    background-image: var(--tallo-gr);
+    position: absolute;
+    top: calc(var(--alto-petalo) * 1.03333333333);
+    left: 50%;
+    transform: translate(-50%, 0%);
+    box-shadow: 0px 0px 5px 2.5px #0F3A2B;
+}
+
+.hoja{
+    width: var(--ancho-hoja);
+    height: var(--alto-hoja);
+    position: absolute;
+}
+
+.hoja1{
+    background-image: var(--hoja1-gr);
+    left: -20px;
+    border-radius: 20% 80% 50% 50% / 89% 89% 11% 11% ;
+    transform: rotate(-1deg);
+    animation-name: hoja1;
+    animation-delay: 5s;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.hoja2{
+    background-image: var(--hoja2-gr);
+    left: 15px;
+    border-radius: 80% 20% 50% 50% / 89% 89% 11% 11% ;
+    transform: rotate(1deg);
+    animation-name: hoja2;
+    animation-delay: 5s;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.mensaje{
+    font-family: 'Dancing Script';
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 10vh;
+    overflow: hidden;
+    width: 500px;
+    animation-name: mensaje;
+    animation-delay: 0s;
+    animation-duration: 20s;
+    white-space: nowrap;
+}
+.m1{
+    left: 10%;
+}
+.m2{
+    left: 65%;
+}
+@keyframes crecimiento1 {
+    0%{
+        transform: translate(170px,450px) scale(0) rotate(0deg);
+        opacity: 0.25;
+    }
+    25%{
+        transform: translate(127.5px,337.5px) scale(0.25) rotate(-7.5deg);
+    }
+    50%{
+        transform: translate(85px,225px) scale(0.5) rotate(-15deg);
+    }
+    75%{
+        transform: translate(42.5px,112.5px) scale(0.75) rotate(-17.5deg);
+    }
+    100%{
+        transform: translate(0px,0px) scale(1) rotate(-20deg);
+        opacity: 1;
+    }
+}
+@keyframes crecimiento2 {
+    0%{
+        transform: translate(0px,450px) scale(0);
+        opacity: 0.25;
+    }
+    25%{
+        transform: translate(0px,337.5px) scale(0.25);
+    }
+    50%{
+        transform: translate(0px,225px) scale(0.5);
+    }
+    75%{
+        transform: translate(0px,112.5px) scale(0.75);
+    }
+    100%{
+        transform: translate(0px, 0px) scale(1);
+        opacity: 1;
+    }
+}
+@keyframes crecimiento3 {
+    0%{
+        transform: translate(-170px,450px) scale(0.1) rotate(0deg);
+        opacity: 0.25;
+    }
+    25%{
+        transform: translate(-127.5px,337.5px) scale(0.25) rotate(7.5deg);
+    }
+    50%{
+        transform: translate(-85px,225px) scale(0.5) rotate(15deg);
+    }
+    75%{
+        transform: translate(-42.5px,112.5px) scale(0.75) rotate(17.5deg);
+    }
+    100%{
+        transform: translate(0px,0px) scale(1) rotate(20deg);
+        opacity: 1;
+    }
+}
+@keyframes hoja1 {
+    0%{
+        transform: rotate(-1deg);
+    }
+    50%{
+        transform: rotate(-6deg);
+    }
+    100%{
+        transform: rotate(-1deg);
+    }
+}
+@keyframes hoja2 {
+    0%{
+        transform: rotate(1deg);
+    }
+    50%{
+        transform: rotate(5deg);
+    }
+    100%{
+        transform: rotate(1deg);
+    }
+}
+@keyframes petalo1 {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(-15deg);
+    }
+}
+@keyframes petalo2 {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(15deg);
+    }
+}
+@keyframes petalo3 {
+    from{
+        transform: rotate(0deg) translateX(0px);
+    }
+    to{
+        transform: rotate(-10deg) translateX(calc(var(--ancho-petalo) * -9 /25));
+    }
+}
+@keyframes petalo4 {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(10deg) translateX(calc(var(--ancho-petalo) * 9 /25));
+    }
+}
+@keyframes florero {
+    from{
+        transform: translateY(-50vw);
+        opacity: 0.75;
+    }
+    to{
+        transform: translateY(50%);
+        opacity: 0.75;
+    }
+}
+
+@keyframes petalo1mov {
+    0%{
+        transform: rotate(-15deg);
+    }
+    25%{
+        transform: rotate(-20deg);
+    }
+    50%{
+        /* transform: rotate(-15deg); */
+    }
+    75%{
+        transform: rotate(-12.5deg);
+    }
+    100%{
+        transform: rotate(-15deg);
+    }
+}
+@keyframes petalo2mov {
+    0%{
+        transform: rotate(15deg);
+    }
+    25%{
+        transform: rotate(20deg);
+    }
+    50%{
+        /* transform: rotate(15deg); */
+    }
+    75%{
+        transform: rotate(12.5deg);
+    }
+    100%{
+        transform: rotate(15deg);
+    }
+}
+@keyframes petalo3mov {
+    0%{
+        transform: rotate(-10deg) translateX(calc(var(--ancho-petalo) * -9 /25));
+    }
+    25%{
+        transform: rotate(-15deg) translateX(calc(var(--ancho-petalo) * -9 /25));
+    }
+    50%{
+        /* transform: rotate(-10deg) translateX(calc(var(--ancho-petalo) * -9 /25)); */
+    }
+    75%{
+        transform: rotate(-7.5deg) translateX(calc(var(--ancho-petalo) * -9 /25));
+    }
+    100%{
+        transform: rotate(-10deg) translateX(calc(var(--ancho-petalo) * -9 /25));
+    }
+}
+@keyframes petalo4mov {
+    0%{
+        transform: rotate(10deg) translateX(calc(var(--ancho-petalo) * 9 /25));
+    }
+    25%{
+        transform: rotate(15deg) translateX(calc(var(--ancho-petalo) * 9 /25));
+    }
+    50%{
+        /* transform: rotate(10deg) translateX(calc(var(--ancho-petalo) * 9 /25)); */
+    }
+    75%{
+        transform: rotate(7.5deg) translateX(calc(var(--ancho-petalo) * 9 /25));
+    }
+    100%{
+        transform: rotate(10deg) translateX(calc(var(--ancho-petalo) * 9 /25));
+    }
+}
+@keyframes llenarFlorero {
+    from{
+        transform: translateY(100%);
+    }
+    to{
+        transform: translateY(0%);
+    }
+}
+@keyframes mostrarAgua {
+    0%{
+        opacity: 0;
+    }
+    99%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.9;
+    }
+}
+@keyframes mensaje {
+    0%{
+        width: 0px;
+    }
+    50%{
+        width:0px;
+    }
+    100%{
+        width: 500px;
+    }
+}
